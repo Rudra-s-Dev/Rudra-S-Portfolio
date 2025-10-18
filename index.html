@@ -1,0 +1,312 @@
+"<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rudra S | Portfolio</title>
+  <meta name="description" content="Portfolio of Rudra S. Python and Web Development projects, skills, and resume." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0f172a;--bg-2:#111827;--fg:#e5e7eb;--muted:#9ca3af;--brand:#7c3aed;--brand-2:#22d3ee;--card:#111827;--card-2:#0b1220;--ring:rgba(124,58,237,.25);--shadow:0 10px 30px rgba(0,0,0,.35);--radius:18px;}
+    *{box-sizing:border-box}
+    html,body{margin:0}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--fg);background:radial-gradient(1200px 800px at 20% 0%, rgba(124,58,237,.18), transparent 60%),radial-gradient(900px 600px at 100% 20%, rgba(34,211,238,.18), transparent 60%),linear-gradient(180deg, var(--bg), var(--bg-2));min-height:100vh}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    header{position:sticky;top:0;backdrop-filter:blur(10px);background:rgba(15,23,42,.55);border-bottom:1px solid rgba(255,255,255,.06);z-index:50}
+    nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .logo{font-family:Poppins,sans-serif;font-weight:700;letter-spacing:.3px}
+    .nav-links{display:flex;gap:18px;flex-wrap:wrap}
+    .nav-links a{padding:10px 14px;border-radius:12px;color:var(--fg);opacity:.9}
+    .nav-links a:hover{background:rgba(124,58,237,.15)}
+    .cta{background:linear-gradient(135deg, var(--brand), var(--brand-2));color:#0b1020;padding:10px 16px;border-radius:14px;font-weight:600}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:48px 0}
+    .badge{display:inline-flex;align-items:center;gap:10px;padding:8px 12px;border-radius:999px;background:rgba(124,58,237,.15);box-shadow:var(--shadow)}
+    .badge .dot{width:8px;height:8px;border-radius:999px;background:var(--brand-2);box-shadow:0 0 0 6px rgba(34,211,238,.15)}
+    h1{margin:14px 0 10px;font-family:Poppins,sans-serif;font-size:42px;line-height:1.12}
+    .lead{color:var(--muted);max-width:56ch}
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+
+    /* Photo card */
+    .photo-card{position:relative;overflow:hidden;border-radius:24px;background:linear-gradient(180deg,#141c2f,#0b1220);border:1px solid rgba(255,255,255,.10);box-shadow:var(--shadow)}
+    .photo-wrap{aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, rgba(124,58,237,.15), rgba(34,211,238,.12));outline:2px solid rgba(255,255,255,.12);outline-offset:0;border-radius:20px}
+    .photo-wrap img{width:100%;height:100%;object-fit:cover;display:block;image-rendering:auto;box-shadow:0 6px 24px rgba(0,0,0,.35);border-radius:20px}
+    .chip{position:absolute;left:16px;bottom:16px;background:rgba(17,24,39,.8);border:1px solid rgba(255,255,255,.08);padding:8px 12px;border-radius:999px;font-size:14px}
+
+    /* Marquee */
+    .marquee{overflow:hidden;white-space:nowrap;border:1px solid rgba(255,255,255,.06);border-radius:12px;background:rgba(255,255,255,.03);padding:10px;margin-top:14px}
+    .marquee span{display:inline-block;animation:scroll 18s linear infinite;padding-right:40px;color:#c7d2fe}
+    @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-100%)}}
+
+    /* Sections */
+    section{padding:44px 0}
+    .section-title{font-family:Poppins, sans-serif;font-size:28px;margin:0 0 18px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .card h3{margin:0 0 8px}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(124,58,237,.18);margin:4px 6px 0 0;font-size:12px}
+
+    /* Projects */
+    .project{display:flex;flex-direction:column;gap:10px}
+    .project .thumb{border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.06);aspect-ratio:16/9;background:#0e1528;display:flex;align-items:center;justify-content:center}
+    .project .thumb img{width:100%;height:100%;object-fit:cover}
+    .project .meta{color:var(--muted);font-size:14px}
+
+    /* Resume */
+    .resume-wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:18px}
+    .embed{border-radius:14px;border:1px solid rgba(255,255,255,.08);overflow:hidden;background:#0b1020}
+    .embed iframe{width:100%;height:420px;border:0}
+
+    /* Contact */
+    .contact{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .contact .card a{display:inline-block;margin-top:8px}
+
+    /* Footer */
+    footer{padding:32px 0;color:var(--muted);text-align:center}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr 1fr}
+      .resume-wrap{grid-template-columns:1fr}
+      .contact{grid-template-columns:1fr}
+    }
+    @media (max-width: 560px){
+      .grid{grid-template-columns:1fr}
+      h1{font-size:34px}
+    }
+
+    /* Focus styles */
+    .focusable:focus{outline:3px solid var(--brand);outline-offset:2px;box-shadow:0 0 0 8px var(--ring)}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Rudra<span style="color:var(--brand-2)">S</span></div>
+        <div class="nav-links">
+          <a href="#about" class="focusable">About</a>
+          <a href="#projects" class="focusable">Projects</a>
+          <a href="#designs" class="focusable">Canva Designs</a>
+          <a href="#skills" class="focusable">Skills</a>
+          <a href="#resume" class="focusable">CV</a>
+          <a href="#contact" class="cta focusable">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <div>
+        <div class="badge"><span class="dot"></span> Open to roles in Python, Web and Research</div>
+        <h1>Hello, I am <span style="color:var(--brand-2)">Rudra</span>. I design and build clean web pages.</h1>
+        <p class="lead">MSc Computer Science graduate. Comfortable with Python, HTML, CSS and SQL. Exploring WordPress for freelance web design. Strong interest in Python development, data analysis and Canva.</p>
+        <div class="hero-card" style="margin-top:16px">
+          <span>Welcome to my portfolio • Projects built with care • Fast, responsive and elegant • </span>
+          <span>Welcome to my portfolio • Projects built with care • Fast, responsive and elegant • </span>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:14px">
+          <a class="cta focusable" href="#projects">View Projects</a>
+          <a class="focusable" href="mailto:rudrashaji189@gmail.com" style="padding:10px 16px;border:1px solid rgba(255,255,255,.12);border-radius:14px">Email me</a>
+        </div>
+      </div>
+
+      <div class="photo-card">
+        <div class="photo-wrap">
+          <img src="Rudra.jpeg" alt="Rudra profile photo" loading="eager"; />
+        </div>
+        <div class="chip">Available for interviews</div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <h2 class="section-title">About me</h2>
+      <div class="card">
+        <p>Motivated MSc Computer Science graduate (2024) with practical knowledge in Python, HTML, CSS, SQL, and Canva design. Currently learning freelance web development using WordPress to enhance web design skills. Interested in Python development, web design, and data analysis, with a growing curiosity toward research analysis and a strong eagerness to learn new technologies.</p>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <h2 class="section-title">Projects</h2>
+      <div class="grid">
+        <!-- Project 1 -->
+        <article class="card project">
+          <h3>Stroke Prediction System</h3>
+          <p class="meta">
+            <strong>Goal:</strong> Predict stroke risk from patient health data. 
+            <strong>What I did:</strong> Collected and cleaned data, trained five machine learning models (Logistic Regression, Random Forest, SVM, Decision Tree, and XGBoost), compared their performance, and deployed the best-performing model using FastAPI.  
+            <strong>Result:</strong> Logistic Regression achieved the highest accuracy of 98% in academic evaluation with a functional demo API.
+          </p>
+          <p><strong>Technologies Used:</strong></p>
+          <div>
+            <span class="pill">Python</span>
+            <span class="pill">Healthcare-dataset</span>
+            <span class="pill">Machine Learning</span>
+            <span class="pill">Pandas</span>
+            <span class="pill">NumPy</span>
+            <span class="pill">Scikit-learn</span>
+            <span class="pill">Jupyter Notebook</span>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="card project">
+          <div class="thumb">
+            <img src="rudra college hub.jpeg" alt="College Hub website screenshot" />
+          </div>
+          <h3>College Hub</h3>
+          <p class="meta"><strong>Goal:</strong> share study notes across colleges. <strong>What I did:</strong> Django app with user roles, material upload, search and clean UI. <strong>Result:</strong> faster access to notes and announcements for students.</p>
+          <p><strong>Technologies Used:</strong></p>
+          <div>
+            <span class="pill">HTML</span>
+            <span class="pill">CSS</span>
+            <span class="pill">JavaScript</span>
+            <span class="pill">Python</span>
+            <span class="pill">Django</span>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="card project">
+          <div class="thumb">
+            <img src="waste management.jpeg" alt="Smart Waste Management screenshot" />
+          </div>
+          <h3>Smart Waste Management Using IoT</h3>
+          <p class="meta"><strong>Goal:</strong> reduce overflow and optimize collection. <strong>What I did:</strong> sensor data readout, threshold alerts, lightweight PHP dashboard. <strong>Result:</strong> timely pickup notifications in a test setup.</p>
+          <p><strong>Technologies Used:</strong></p>
+          <div>
+            <span class="pill">Arduino</span>
+            <span class="pill">Ultrasonic Sensor</span>
+            <span class="pill">Temperature Sensor</span>
+            <span class="pill">Humidity Sensor</span>
+            <span class="pill">NodeMCU</span>
+            <span class="pill">C++</span>
+            <span class="pill">PHP</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Canva Design Showcase -->
+    <section id="designs">
+      <h2 class="section-title">Design Showcase (Canva)</h2>
+      <div class="grid">
+        <!-- Festival Flyer - poster -->
+       <article class="card project">
+          <div class="thumb">
+            <img src="rudra festival flyer.jpeg" alt="festival flyer promo poster" />
+          </div>
+          <h3>festival flyer promo Poster</h3>
+          <p class="meta"><strong>Brief:</strong> static post for social media. <strong>Focus:</strong> contrast, spacing and typography. <strong>Tools:</strong> Canva.</p>
+        </article>
+
+        <!-- Food promo poster -->
+        <article class="card project">
+          <div class="thumb">
+            <img src="rudra food banner.jpeg" alt="food promo poster" />
+          </div>
+          <h3>Food Promo Poster</h3>
+          <p class="meta"><strong>Brief:</strong> static post for social media. <strong>Focus:</strong> contrast, spacing and typography. <strong>Tools:</strong> Canva.</p>
+        </article>
+
+        <!-- Header Banner -->
+        <article class="card project">
+          <div class="thumb">
+            <img src="website header.jpeg" alt="Website header banner design preview" />
+          </div>
+          <h3>Website Header Banner</h3>
+          <p class="meta"><strong>Brief:</strong> modern hero banner for a small business site. <strong>Focus:</strong> grid alignment and responsive-safe text area. <strong>Tools:</strong> Canva.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2 class="section-title">Skills</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Programming</h3>
+          <p>Python, HTML, CSS, SQL</p>
+        </div>
+        <div class="card">
+          <h3>Tools</h3>
+          <p>Microsoft Office, VS Code, PyCharm, Jupyter</p>
+        </div>
+        <div class="card">
+          <h3>Design and Office</h3>
+          <p>Canva, Word. Basic WordPress setup.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resume / CV -->
+    <section id="resume">
+      <h2 class="section-title">CV</h2>
+      <div class="resume-wrap">
+        <div class="card">
+          <p>Download my CV for detailed education, skills and projects. You can also preview it on the right.</p>
+          <a class="cta focusable" href="Resume_Rudra.pdf" download>Download CV</a>
+          <p style="color:var(--muted);margin-top:10px"></p>
+        </div>
+        <div class="embed">
+          <iframe src="Resume_Rudra.pdf" title="Resume preview"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <div class="contact">
+        <div class="card">
+          <h3>Email</h3>
+          <p>Click below to send me an email.</p>
+          <a class="cta focusable" href="https://mail.google.com/mail/?view=cm&fs=1&to=rudrashaji189@gmail.com&su=Interview%20Opportunity" target="_blank" rel="noopener">rudrashaji189@gmail.com</a>
+        </div>
+
+        <div class="card">
+          <h3>LinkedIn</h3>
+          <p>Connect with me on LinkedIn.</p>
+          <a class="cta focusable" href="https://linkedin.com/in/rudra-s-0133982a8" target="_blank" rel="noopener">Visit my LinkedIn Profile</a>
+        </div>
+
+        <div class="card">
+          <h3>Phone</h3>
+          <p><a class="focusable" href="tel:+919061943405">+91 9061943405</a></p>
+        </div>
+
+        <div class="card">
+          <h3>Location</h3>
+          <p><a class="focusable" href="https://maps.google.com/?q=Kuriannoor,Pathanamthitta,Kerala" target="_blank" rel="noopener">Kuriannoor, Pathanamthitta, Kerala</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="year"></span> Rudra S. All rights reserved.</div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id= a.getAttribute('href');
+        if(id.length > 1){
+          e.preventDefault();
+          document.querySelector(id).scrollIntoView({behavior:'smooth'});
+        }
+      });
+    });
+  </script>
+</body>
+</html> 
+          
